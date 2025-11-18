@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <title>Usia</title>
+</head>
+<body>
+ <script>
+let usia = parseInt(prompt("Masukkan usia Anda:"));
+if (usia < 13) {
+  alert("Anak-anak");
+} else if (usia >= 13 && usia <= 17) {
+  alert("Remaja");
+} else if (usia >= 18) {
+  alert("Dewasa");
+} else {
+  alert("Usia tidak valid!");
+}
+ 
+/* Refleksi
+
+Jelaskan perbedaan antara if dan else if
+if
+Digunakan untuk memeriksa kondisi pertama. Jika benar (true), maka kode di dalamnya dijalankan.
+else if
+Digunakan untuk memeriksa kondisi lain jika kondisi if sebelumnya tidak terpenuhi. Bisa ada lebih dari satu else if.
+
+Apa yang terjadi bila semua kondisi salah?
+Kalau semua kondisi baik if maupun else if salah, maka tidak ada kode yang dijalankan, kecuali ditambah bagian else.
+*/
+ </script>
+</body>
+</html>
