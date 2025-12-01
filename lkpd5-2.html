@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <title>Nilai Siswa dan Rata-rata</title>
+</head>
+<body>
+ <script>
+let nilai = [80, 75, 90, 85, 70];
+let total = 0;
+for (let i = 0; i < nilai.length; i++) {
+  total += nilai[i];
+}
+let rataRata = total / nilai.length;
+document.write("Nilai siswa: " + nilai + "<br>");
+document.write("Rata-rata: " + rataRata);
+ 
+/* Refleksi
+ 
+ Apa keuntungan menggunakan array dibanding variabel terpisah?
+ Menyimpan banyak data dalam satu variabel, lebih mudah diolah dengan perulangan, menghemat penulisan kode, memudahkan penambahan dan penghapusan data, serta lebih mudah dikelola.
+ 
+ Bagaimana cara menambahkan elemen baru ke array?
+ Menggunakan .push()
+ Contoh:
+ let buah = ["Pir", "Jeruk"];
+ buah.push("Mangga");
+*/
+ </script>
+</body>
+</html>
