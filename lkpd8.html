@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <title>Validasi Password</title>
+</head>
+<body>
+
+<h3>Masukkan Password:</h3>
+
+<input type="password" id="password" oninput="cekPassword()">
+<p id="pesan"></p>
+
+<script>
+function cekPassword() {
+  let pw = document.getElementById("password").value;
+  let pesan = document.getElementById("pesan");
+
+  if (pw.length < 8) {
+    pesan.style.color = "red";
+    pesan.textContent = "Panjang Password Minimal 8 karakter!";
+  } else {
+    pesan.style.color = "green";
+    pesan.textContent = "Password sudah valid.";
+  }
+}
+
+ </script>
+</body>
+</html>
