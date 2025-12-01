@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <title>Project Daftar Belanja</title>
+  <style>
+    body { font-family: Arial; }
+    #feedback { margin-top: 5px; }
+    .error { color: red; }
+    .success { color: green; }
+    ul { padding-left: 20px; }
+  </style>
+</head>
+<body>
+
+<h2>Daftar Belanja</h2>
+
+<input type="text" id="inputBelanja" placeholder="Masukkan item belanja">
+<button id="btnTambah">Tambah</button>
+
+<div id="feedback"></div>
+<h3>List:</h3>
+<ul id="listBelanja"></ul>
+
+<script>
+/* Variabel & Array */
+let daftar = []; // menyimpan item belanja
+
+/* FUNGSI UNTUK UPDATE TAMPILAN LIST */
+function tampilkanList() {
+  let list = document.getElementById("listBelanja");
+  list.innerHTML = ""; // reset list sebelum ditampilkan ulang
+
+  // perulangan untuk menampilkan seluruh isi array
+  for (let i = 0; i < daftar.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = daftar[i];
+    list.appendChild(li);
+  }
+}
+
+/* FUNGSI TAMBAHKAN ITEM */
+function tambahBelanja() {
+  let input = document.getElementById("inputBelanja").value.trim();
+  let feedback = document.getElementById("feedback");
+
+  // Validasi (percabangan)
+  if (input === "") {
+    feedback.innerHTML = "<span class='error'>Isi terlebih dahulu!</span>";
+    return;
+  }
+
+  // Tambahkan ke array
+  daftar.push(input);
+
+  feedback.innerHTML = "<span class='success'>Item ditambahkan!</span>";
+
+  document.getElementById("inputBelanja").value = ""; // kosongkan input
+  tampilkanList(); // update tampilan
+}
+
+/* EVENT PADA TOMBOL */
+document.getElementById("btnTambah").addEventListener("click", tambahBelanja);
+
+ </script>
+</body>
+</html>
