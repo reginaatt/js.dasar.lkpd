@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <title>Tambah Elemen ke Div</title>
+</head>
+<body>
+ 
+<h3>Contoh Menambahkan Elemen</h3>
+ 
+<div id="kotak"></div> 
+
+<br>
+<button onclick="tambahElemen()">Tambah Elemen</button>
+
+<script>
+function tambahElemen() {
+  // Membuat elemen paragraf baru
+  let pBaru = document.createElement("p");
+  
+  // Menambahkan teks ke dalam paragraf
+  pBaru.textContent = "Elemen baru berhasil ditambahkan!";
+  
+  // Memasukkan paragraf ke dalam div
+  document.getElementById("kotak").appendChild(pBaru);
+}
+
+/* Refleksi
+ 
+ Apa fungsi document.getElementById()?
+ Yaitu fungsi JavaScript untuk mengambil/mengakses elemen HTML berdasarkan ID-nya.
+ 
+ Bagaimana cara menambah elemen baru ke halaman?
+ Buat elemen baru: document.createElement()
+ Isi elemen (opsional) dengan .innerHTML atau .textContent
+ Tambahkan ke halaman dengan .appendChild() atau .append()
+*/
+ </script>
+</body>
+</html>
