@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <title>Validasi Password dengan Feedback</title>
+</head>
+<body>
+
+<h3>Masukkan Password:</h3>
+
+<input type="password" id="password" oninput="cekPassword()">
+<div id="feedback"></div>
+
+<script>
+function cekPassword() {
+  let pw = document.getElementById("password").value;
+  let feedback = document.getElementById("feedback");
+
+  if (pw.length < 8) {
+    feedback.innerHTML = "<span style='color:red;'>Panjang Password Minimal 8 karakter!</span>";
+  } else {
+    feedback.innerHTML = "<span style='color:green;'>Password valid.</span>";
+  }
+}
+/* Refleksi
+ 
+ Mengapa validasi penting sebelum data dikirim ke server?
+ Untuk memastikan data yang dikirim benar dan sesuai, mencegah kesalahan sistem atau proses, menghemat sumber daya server, meningkatkan keamanan, memberikan pengalaman pengguna yang baik.
+ 
+ Apa risiko jika tidak melakukan validasi?
+ Server menerima data tidak lengkap / tidak sesuai, error dalam sistem, penyimpanan data kacau / database berantakan, risiko keamanan (serangan), pengalaman pengguna buruk.
+*/
+ </script>
+</body>
+</html>
