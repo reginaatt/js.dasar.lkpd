@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+ <meta charset="UTF-8">
+ <title>Project Daftar Belanja</title>
+  <style>
+    body { font-family: Arial; }
+    #feedback { margin-top: 5px; }
+    .error { color: red; }
+    .success { color: green; }
+    ul { padding-left: 20px; }
+  </style>
+</head>
+<body>
+
+<h2>Daftar Belanja</h2>
+
+<input type="text" id="inputBelanja" placeholder="Masukkan item belanja">
+<button id="btnTambah">Tambah</button>
+<button id="btnReset">Reset</button>
+
+<div id="feedback"></div>
+<h3>List:</h3>
+<ul id="listBelanja"></ul>
+
+<script>
+/* Variabel & Array */
+let daftar = []; // menyimpan item belanja
+
+/* FUNGSI UNTUK UPDATE TAMPILAN LIST */
+function tampilkanList() {
+  let list = document.getElementById("listBelanja");
+  list.innerHTML = ""; // reset list sebelum ditampilkan ulang
+
+  // perulangan untuk menampilkan seluruh isi array
+  for (let i = 0; i < daftar.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = daftar[i];
+    list.appendChild(li);
+  }
+}
+
+/* FUNGSI TAMBAHKAN ITEM */
+function tambahBelanja() {
+  let input = document.getElementById("inputBelanja").value.trim();
+  let feedback = document.getElementById("feedback");
+
+  // Validasi input tidak boleh kosong
+  if (input === "") {
+    feedback.innerHTML = "<span class='error'>Isi terlebih dahulu!</span>";
+    return;
+  }
+
+  // Tambahkan item ke array
+  daftar.push(input);
+
+  feedback.innerHTML = "<span class='success'>Item ditambahkan!</span>";
+
+  document.getElementById("inputBelanja").value = ""; // kosongkan input
+  tampilkanList();
+}
+
+/* FUNGSI RESET DAFTAR */
+function resetBelanja() {
+  daftar = []; // kosongkan array
+  tampilkanList(); // hapus tampilan list
+  document.getElementById("feedback").innerHTML =
+    "<span class='success'>Daftar telah di-reset.</span>";
+}
+
+/* EVENT */
+document.getElementById("btnTambah").addEventListener("click", tambahBelanja);
+document.getElementById("btnReset").addEventListener("click", resetBelanja);
+
+/* Refleksi
+ 
+ Apa tantangan terbesar membuat project ini?
+ Menggabungkan beberapa konsep JavaScript sekaligus ke dalam satu program agar semuanya berjalan bersamaan, seperti mengelola array, menambahkan validasi input, menghubungkan event tombol, dsb.
+ 
+ Fitur apa yang ingin kalian tambahkan jika ada waktu lebih?
+ Menghapus item satu per satu, mengedit item, menyimpan data ke localStorage, hitung total jumlah item, dan sorting / urutkan daftar.
+*/
+ </script>
+</body>
+</html>
