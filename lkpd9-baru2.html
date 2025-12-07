@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Daftar Belanja</title>
+
+<style>
+  /* STYLE UMUM */
+  body {
+    font-family: "Poppins", Arial, sans-serif;
+    background: #eef1ff;
+    margin: 0;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container {
+    background: #ffffff;
+    width: 380px;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  h2 {
+    text-align: center;
+    color: #4a4e69;
+    margin-bottom: 20px;
+  }
+
+  /* INPUT & BUTTON */
+  .input-group {
+    display: flex;
+    gap: 8px;
+  }
+
+  input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #cfd3ea;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    background: #f9f9ff;
+  }
+  input:focus {
+    border-color: #7a86b6;
+    box-shadow: 0 0 5px rgba(122,134,182,0.3);
+  }
+
+  button {
+    border: none;
+    padding: 10px 14px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.2s;
+    font-size: 14px;
+  }
+
+  #btnTambah {
+    background: #8e9efc;
+    color: white;
+  }
+
+  #btnTambah:hover {
+    background: #7c8df7;
+  }
+
+  #btnReset {
+    background: #ffb5b5;
+    color: white;
+  }
+  #btnReset:hover {
+    background: #ff9a9a;
+  }
+
+  /* FEEDBACK */
+  #feedback {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .error { color: #d94f4f; }
+  .success { color: #4caf50; }
+
+  /* LIST */
+  ul {
+    margin-top: 20px;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  li {
+    background: #f6f6ff;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    color: #4a4e69;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+
+  .btnHapus {
+    background: #f48b8b;
+    padding: 6px 10px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  .btnHapus:hover {
+    background: #e56f6f;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <h2>Daftar Belanja</h2>
+
+  <!-- Input + tombol -->
+  <div class="input-group">
+    <input type="text" id="inputBelanja" placeholder="Masukkan item belanja">
+    <button id="btnTambah">Tambah</button>
+    <button id="btnReset">Reset</button>
+  </div>
+
+  <!-- Feedback -->
+  <div id="feedback"></div>
+
+  <!-- List -->
+  <h3>List:</h3>
+  <ul id="listBelanja"></ul>
+
+</div>
+
+<script>
+/* DATA */
+let daftar = [];
+
+/* FUNGSI UPDATE LIST */
+function tampilkanList() {
+  const list = document.getElementById("listBelanja");
+  list.innerHTML = "";
+
+  daftar.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.textContent = item;
+
+    const hapusBtn = document.createElement("button");
+    hapusBtn.textContent = "Hapus";
+    hapusBtn.className = "btnHapus";
+    hapusBtn.onclick = () => hapusItem(index);
+
+    li.appendChild(hapusBtn);
+    list.appendChild(li);
+  });
+}
+
+/* TAMBAH ITEM */
+function tambahBelanja() {
+  const input = document.getElementById("inputBelanja");
+  const feedback = document.getElementById("feedback");
+  const nilai = input.value.trim();
+
+  if (nilai === "") {
+    feedback.innerHTML = "<span class='error'>Isi terlebih dahulu!</span>";
+    return;
+  }
+
+  daftar.push(nilai);
+  input.value = "";
+  feedback.innerHTML = "<span class='success'>Item ditambahkan!</span>";
+
+  tampilkanList();
+}
+
+/* HAPUS ITEM */
+function hapusItem(i) {
+  daftar.splice(i, 1);
+  tampilkanList();
+  document.getElementById("feedback").innerHTML =
+    "<span class='success'>Item berhasil dihapus.</span>";
+}
+
+/* RESET */
+function resetBelanja() {
+  daftar = [];
+  tampilkanList();
+  document.getElementById("feedback").innerHTML =
+    "<span class='success'>Daftar berhasil di-reset.</span>";
+}
+
+/* EVENT */
+document.getElementById("btnTambah").addEventListener("click", tambahBelanja);
+document.getElementById("btnReset").addEventListener("click", resetBelanja);
+</script>
+
+</body>
+</html>
